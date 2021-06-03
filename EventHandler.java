@@ -26,7 +26,9 @@ import org.apache.commons.lang3.tuple.Pair;
 
 
 public class EventHandler implements RequestHandler<ScheduledEvent, String> {
+    
 
+    // Rerunning the jobs
     private final static AmazonS3 AMAZON_S3 = AmazonS3ClientBuilder.standard().withRegion(Regions.DEFAULT_REGION).build();
     /**
      * Shipment events for a carrier are uploaded to separate S3 buckets based on the source of events. E.g., events originating from
