@@ -27,6 +27,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class EventHandler implements RequestHandler<ScheduledEvent, String> {
 
+    private final static AmazonS3 AMAZON_S3 = AmazonS3ClientBuilder.standard().withRegion(Regions.DEFAULT_REGION).build();
     /**
      * Shipment events for a carrier are uploaded to separate S3 buckets based on the source of events. E.g., events originating from
      * the hand-held scanner are stored in a separate bucket than the ones from mobile App. The Lambda processes events from multiple
@@ -159,7 +160,7 @@ public class EventHandler implements RequestHandler<ScheduledEvent, String> {
     }
 
     public static AmazonS3 getS3Client() {
-        return AmazonS3ClientBuilder.standard().withRegion(Regions.DEFAULT_REGION).build();
+        return AMAZON_S3;
     }
 
 
