@@ -94,7 +94,7 @@ public class EventHandler implements RequestHandler<ScheduledEvent, String> {
         final AmazonS3 s3Client = EventHandler.getS3Client();
         logger.log("Processing Bucket: " + bucketName);
 
-        ObjectListing files = s3Client.listObjects(bucketName);
+        //delete the code to get points
         List<KeyVersion> filesProcessed = new ArrayList<DeleteObjectsRequest.KeyVersion>();
 
         for (Iterator<?> iterator = files.getObjectSummaries().iterator(); iterator.hasNext(); ) {
